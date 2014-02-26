@@ -1,0 +1,16 @@
+//globals
+
+//border box all the things
+
+* {
+    box-sizing: border-box;
+}
+
+//Force Children to self clear
+
+.group:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
