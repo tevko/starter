@@ -50,9 +50,8 @@ gulp.task('clean', function() {
     .pipe(clean());
 });
 
-gulp.task('default', ['clean'], function() {
-    // Run all tasks on first run
-    gulp.run('styles', 'scripts', 'images','browserSync');
+//watch all the things
+gulp.task('watch', function () {
     // Watch the css folder for changes
     gulp.watch('dev/css/*.css', ['styles']);
     // Watch the js folder for changes
@@ -60,3 +59,5 @@ gulp.task('default', ['clean'], function() {
     // Watch the img folder for changes
     gulp.watch('dev/img/*', ['images']);
 });
+
+gulp.task('default', ['watch','styles','scripts','images','browserSync','clean']);

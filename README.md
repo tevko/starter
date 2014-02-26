@@ -24,6 +24,8 @@ Once node, ScoutApp, BrowserSync, and Gulp are installed -
 
 6.) npm update --save
 
-7.) run gulp
+7.) Create assets folder
 
-8.) start ScoutApp
+8.) run gulp
+
+9.) start ScoutApp
