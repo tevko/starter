@@ -22,6 +22,8 @@ Once node, ScoutApp, BrowserSync, and Gulp are installed -
 
 5.) npm install
 
-6.) run gulp
+6.) npm update --save
 
-7.) start ScoutApp
+7.) run gulp
+
+8.) start ScoutApp

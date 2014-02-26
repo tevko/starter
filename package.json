@@ -1,5 +1,5 @@
 {
-  "name": "starter",
+  "name": "starter-nogit",
   "preferGlobal": true,
   "version": "0.0.0",
   "description": "starter package",
@@ -11,7 +11,7 @@
     "gulp-clean": "~0.2.4",
     "gulp-autoprefixer": "0.0.6",
     "gulp-cache": "~0.1.2",
-    "browser-sync": "~0.5.3",
+    "browser-sync": "~1.4.0",
     "gulp-imagemin": "~0.1.5"
   }
 }
