@@ -60,4 +60,4 @@ gulp.task('watch', function () {
     gulp.watch('dev/img/*', ['images']);
 });
 
-gulp.task('default', ['watch','styles','scripts','images','browserSync','clean']);
+gulp.task('default', ['browserSync','watch','scripts','images','styles','clean']);
