@@ -8,7 +8,8 @@ var gulp = require('gulp'),
     clean = require('gulp-clean'),
     concat = require('gulp-concat'),
     browserSync = require('browser-sync'),
-    cache = require('gulp-cache');
+    cache = require('gulp-cache'),
+    rename = require('gulp-rename');
 // then come the individual functions
 
 //css
@@ -39,7 +40,7 @@ gulp.task('images', function() {
 });
 
 //browser-sync stuff
-gulp.task('browser-sync', function() {
+gulp.task('browserSync', function() {
     browserSync.init(['assets/css/*.css', '*.php','assets/js/*.js']);
 });
 
@@ -51,7 +52,7 @@ gulp.task('clean', function() {
 
 gulp.task('default', ['clean'], function() {
     // Run all tasks on first run
-    gulp.run('styles', 'scripts', 'images','borwser-sync');
+    gulp.run('styles', 'scripts', 'images','browserSync');
     // Watch the css folder for changes
     gulp.watch('dev/css/*.css', ['styles']);
     // Watch the js folder for changes
@@ -59,4 +60,3 @@ gulp.task('default', ['clean'], function() {
     // Watch the img folder for changes
     gulp.watch('dev/img/*', ['images']);
 });
-
