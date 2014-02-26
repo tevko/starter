@@ -8,9 +8,9 @@ starter
 3.) Browser Sync
 4.) Gulp
 
-** DIRECTIONS **
+**DIRECTIONS**
 
-Once node, ScoutApp, BrowserSync, and Gulp are installed - 
+Once node, ScoutApp, BrowserSync, and Gulp are installed -
 
 1.) Clone Project and change folder name to desired project name
 2.) Open node
