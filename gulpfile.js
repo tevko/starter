@@ -9,8 +9,17 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     browserSync = require('browser-sync'),
     cache = require('gulp-cache'),
-    rename = require('gulp-rename');
+    rename = require('gulp-rename'),
+    sass = require('gulp-sass');
 // then come the individual functions
+
+//sass
+
+gulp.task('sass', function () {
+    gulp.src('dev/scss/*.scss')
+    .pipe(sass())
+    .pipe(gulp.dest('dev/css'));
+});
 
 //css
 gulp.task('styles', function() {
@@ -52,6 +61,8 @@ gulp.task('clean', function() {
 
 //watch all the things
 gulp.task('watch', function () {
+	//Sass stuff
+	gulp.watch('dev/scss/**/*',['sass'])
     // Watch the css folder for changes
     gulp.watch('dev/css/*.css', ['styles']);
     // Watch the js folder for changes
@@ -60,4 +71,4 @@ gulp.task('watch', function () {
     gulp.watch('dev/img/*', ['images']);
 });
 
-gulp.task('default', ['browserSync','watch','scripts','images','styles']);
+gulp.task('default', ['browserSync','watch','scripts','images','sass','styles']);
