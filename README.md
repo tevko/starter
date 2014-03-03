@@ -3,17 +3,15 @@ starter
 
 **DEPENDENCIES**
 
-1.) ScoutAPP - configured to work in 'dev' directory
+1.) Node
 
-2.) Node
+2.) Browser Sync
 
-3.) Browser Sync
-
-4.) Gulp
+3.) Gulp
 
 **DIRECTIONS**
 
-Once node, ScoutApp, BrowserSync, and Gulp are installed -
+Once node, BrowserSync, and Gulp are installed -
 
 1.) Clone Project and change folder name to desired project name
 
@@ -30,7 +28,5 @@ Once node, ScoutApp, BrowserSync, and Gulp are installed -
 7.) Create assets folder with img, css, and js folders inside
 
 8.) run gulp*
-
-9.) start ScoutApp
 
 * might need to run gulp twice so that the files will be created in assets and then browser-Sync will see them
