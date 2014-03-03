@@ -62,7 +62,7 @@ gulp.task('clean', function() {
 //watch all the things
 gulp.task('watch', function () {
 	//Sass stuff
-	gulp.watch('dev/scss/**/*',['sass'])
+	gulp.watch('dev/scss/**/*', ['sass']);
     // Watch the css folder for changes
     gulp.watch('dev/css/*.css', ['styles']);
     // Watch the js folder for changes
