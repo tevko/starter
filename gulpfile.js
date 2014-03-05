@@ -50,19 +50,19 @@ gulp.task('images', function() {
 
 //browser-sync stuff
 gulp.task('browserSync', function() {
-    browserSync.init(['assets/css/*.css', '*.php','assets/js/*.js']);
+    browserSync.init(['assets/css/*', '*.php','assets/js/*.js']);
 });
 
 //cleanup time
 gulp.task('clean', function() {
-  return gulp.src(['assets/css', 'assets/js', 'assets/img'], {read: false})
+  return gulp.src(['assets/css/*', 'assets/js/*', 'assets/img/*'], {read: false})
     .pipe(clean());
 });
 
 //watch all the things
 gulp.task('watch', function () {
 	//Sass stuff
-	gulp.watch('dev/scss/**/*', ['sass']);
+	gulp.watch('dev/scss/**/*',['sass'])
     // Watch the css folder for changes
     gulp.watch('dev/css/*.css', ['styles']);
     // Watch the js folder for changes
