@@ -9,16 +9,9 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync'),
     cache = require('gulp-cache'),
     rename = require('gulp-rename'),
-    sass = require('gulp-sass');
 // then come the individual functions
 
-//sass
-
-gulp.task('sass', function () {
-    gulp.src('dev/scss/*.scss')
-    .pipe(sass())
-    .pipe(gulp.dest('dev/css'));
-});
+//using ruby sass because libsass can't update on time
 
 //css
 gulp.task('styles', function() {

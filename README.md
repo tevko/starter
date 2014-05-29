@@ -9,6 +9,8 @@ starter
 
 3.) Gulp
 
+4.) Use ruby for sass, the config.rb file ensures tat all you have to do is run 'compass watch'
+
 **DIRECTIONS**
 
 Once node, BrowserSync, and Gulp are installed -
