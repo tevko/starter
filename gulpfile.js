@@ -63,4 +63,4 @@ gulp.task('watch', function () {
     gulp.watch('dev/img/*', ['images']);
 });
 
-gulp.task('default', ['browserSync','watch','scripts','images','sass','styles']);
+gulp.task('default', ['browserSync','watch','scripts','images','styles']);
