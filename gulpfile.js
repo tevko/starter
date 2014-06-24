@@ -8,7 +8,7 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     browserSync = require('browser-sync'),
     cache = require('gulp-cache'),
-    rename = require('gulp-rename'),
+    rename = require('gulp-rename');
 // then come the individual functions
 
 //using ruby sass because libsass can't update on time
@@ -42,7 +42,10 @@ gulp.task('images', function() {
 
 //browser-sync stuff
 gulp.task('browserSync', function() {
-    browserSync.init(['assets/css/*', '*.php','assets/js/*.js']);
+    browserSync.init(null, {
+      proxy: "tim.local/moodme",
+      files: ["assets/css/styles.min.css", "assets/js/main.min.js", "*.html"]
+    });
 });
 
 //cleanup time
@@ -53,8 +56,6 @@ gulp.task('clean', function() {
 
 //watch all the things
 gulp.task('watch', function () {
-    //Sass stuff
-    gulp.watch('dev/scss/**/*', ['sass']);
     // Watch the css folder for changes
     gulp.watch('dev/css/*.css', ['styles']);
     // Watch the js folder for changes
