@@ -56,7 +56,7 @@ gulp.task('clean', function() {
 
 //watch all the things
 gulp.task('watch', function () {
-    // Watch the css folder for changes
+    // Watch the css folder for change
     gulp.watch('dev/css/*.css', ['styles']);
     // Watch the js folder for changes
     gulp.watch('dev/js/*.js', ['scripts']);
