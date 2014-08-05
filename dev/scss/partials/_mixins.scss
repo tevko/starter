@@ -2,16 +2,17 @@
 
 /* media query mixin -
 
-@mixin bp($point) {
-    @if $point == papa-bear {
-        @media (max-width: 1600px) { @content; }
-    }
-    @else if $point == mama-bear {
-        @media (max-width: 1250px) { @content; }
-    }
-    @else if $point == baby-bear {
-        @media (max-width: 600px)  { @content; }
-    }
+@mixin bp($breakpoint){
+   $map : (small: 480px, medium: 770px, large: 1140px);
+   
+   @if map-has-key($map, $breakpoint){
+      @media all and (min-width: #{map-get($map, $breakpoint)}){
+          @content;
+        }
+   }
+   @else{
+      @warn "There is no value #{$breakpoint} in the list of breakpoints";
+   }
 }
 
 to use  -
