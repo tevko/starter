@@ -24,11 +24,7 @@ gulp.task('styles', function() {
 		.pipe(gulp.dest('library/css'))
 		.pipe(rename({suffix: '.min'}))
 		.pipe(minifycss())
-		.pipe(rev())
-		.pipe(gulp.dest('library/css'))
-		.pipe(rev.manifest())
 		.pipe(gulp.dest('library/css'));
-
 });
 
 //js
@@ -38,9 +34,6 @@ gulp.task('scripts', function() {
 		.pipe(gulp.dest('library/js'))
 		.pipe(rename({suffix: '.min'}))
 		.pipe(uglify())
-		.pipe(rev())
-		.pipe(gulp.dest('library/js'))
-		.pipe(rev.manifest())
 		.pipe(gulp.dest('library/js'));
 });
 
@@ -142,6 +135,25 @@ gulp.task('clean', function() {
 		.pipe(clean());
 });
 
+//fingerprint files and other build stuff
+gulp.task('deployCSS', function() {
+	return gulp.src('library/css/styles.min.css')
+		.pipe(rev())
+		.pipe(gulp.dest('library/css'))
+		.pipe(rev.manifest())
+		.pipe(gulp.dest('library/css'));
+});
+
+gulp.task('deployJS', function() {
+	return gulp.src('limrary/js/main.min.js')
+		.pipe(rev())
+		.pipe(gulp.dest('library/js'))
+		.pipe(rev.manifest())
+		.pipe(gulp.dest('library/js'));
+});
+
+gulp.task('deploy', ['deployCSS', 'deployJS']);
+
 //watch all the things
 gulp.task('watch', function () {
 	// Watch the css folder for change
@@ -150,8 +162,6 @@ gulp.task('watch', function () {
 	gulp.watch('dev/js/*.js', ['scripts']);
 	// Watch the img folder for changes
 	gulp.watch('dev/images/*', ['images']);
-	// Watch for sprites
-	gulp.watch('library/images/*.png', ['sprites']);
 });
 
-gulp.task('default', ['browserSync','watch','scripts','images','styles','sprites']);
+gulp.task('default', ['browserSync','watch','scripts','images','styles']);
