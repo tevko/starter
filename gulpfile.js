@@ -12,6 +12,7 @@ var gulp = require('gulp'),
 	fingerprint = require('gulp-fingerprint'),
 	through = require('through2'),
 	replace = require('gulp-replace'),
+	manifest = require('gulp-manifest'),
 	rev = require('gulp-rev');
 // then come the individual functions
 
@@ -145,14 +146,26 @@ gulp.task('deployCSS', function() {
 });
 
 gulp.task('deployJS', function() {
-	return gulp.src('limrary/js/main.min.js')
+	return gulp.src('library/js/main.min.js')
 		.pipe(rev())
 		.pipe(gulp.dest('library/js'))
 		.pipe(rev.manifest())
 		.pipe(gulp.dest('library/js'));
 });
 
-gulp.task('deploy', ['deployCSS', 'deployJS']);
+gulp.task('manifest', function(){
+	gulp.src(['**/*', '!**/{node_modules,node_modules/**}', '!**/{dev,dev/**}', '!**/*.php'])
+		.pipe(manifest({
+		hash: true,
+		preferOnline: true,
+		network: ['http://*', 'https://*', '*'],
+		filename: 'manifest.appcache',
+		exclude: 'manifest.appcache'
+	}))
+	.pipe(gulp.dest(''));
+});
+
+gulp.task('deploy', ['deployCSS', 'deployJS', 'manifest']);
 
 //watch all the things
 gulp.task('watch', function () {
