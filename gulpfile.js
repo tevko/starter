@@ -135,24 +135,21 @@ gulp.task('clean', function() {
 		.pipe(clean());
 });
 
-//fingerprint files and other build stuff
-gulp.task('deployCSS', function() {
-	return gulp.src('library/css/styles.min.css')
-		.pipe(rev())
-		.pipe(gulp.dest('library/css'))
-		.pipe(rev.manifest())
-		.pipe(gulp.dest('library/css'));
+gulp.task('fingerprint', function () {
+    return gulp.src([bbResponsive + '/dist/js/libraries.min.js', bbResponsive + '/dist/js/baublebar.min.js', bbResponsive + '/dist/css/main.min.css'], {base: bbResponsive + '/dist'})
+        .pipe(gulp.dest(bbResponsive + '/dist'))
+        .pipe(rev())
+        .pipe(gulp.dest(bbResponsive + '/dist'))
+        .pipe(rev.manifest())
+        .pipe(gulp.dest(bbResponsive + '/dist'));
 });
 
-gulp.task('deployJS', function() {
-	return gulp.src('library/js/main.min.js')
-		.pipe(rev())
-		.pipe(gulp.dest('library/js'))
-		.pipe(rev.manifest())
-		.pipe(gulp.dest('library/js'));
+gulp.task('removeOldAssets', ['fingerprint'], function () {
+    return gulp.src([bbResponsive + '/dist/js/baublebar.js', bbResponsive + '/dist/js/libraries.js', bbResponsive + '/dist/js/baublebar.min.js', bbResponsive + '/dist/js/libraries.min.js', bbResponsive + '/dist/css/main.min.css'], {read: false})
+    		.pipe(clean());
 });
 
-gulp.task('deploy', ['deployCSS', 'deployJS']);
+gulp.task('deploy', ['removeOldAssets']);
 
 //watch all the things
 gulp.task('watch', function () {
